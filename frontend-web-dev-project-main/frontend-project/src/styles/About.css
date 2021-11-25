@@ -1,0 +1,96 @@
+.About {
+  padding-bottom: 50px;
+  height: 100vh;
+  margin-top: 40px;
+}
+
+.About .info p {
+    padding-bottom:15px;
+}
+/*
+.description h3{
+    padding-top: 15px;
+    margin: 0 44%;
+    justify-content: center;
+    padding-bottom: 5px;
+}*/
+
+.info > p{
+    text-align: justify;
+    width: 100%;
+    color: rgb(156, 107, 58);  
+    font-weight: 600;
+}
+
+.description h3{
+  color: rgb(156, 107, 58);  
+  font-weight: bold;
+}
+
+.description > p{
+    text-align: justify;
+    width: 100%;
+    color: rgb(156, 107, 58);  
+    font-weight: 600;
+}
+
+/* @media (max-width: 414px) {
+  
+
+    div > .info{
+      max-width: 100%;
+      margin: 0;  
+      display: flex;
+      float: left;
+    }
+    
+    .info > p{
+      width: 100%;
+      margin: 0;
+      
+    }
+  
+  }
+  
+  @media (max-width: 768px) {
+  
+    .About p{
+      width: 100%;
+    }
+  
+    .About {
+      
+      justify-content: space-evenly;
+      font-size: 15px;
+      max-width: 100%;
+    }
+
+    .description {
+      padding-bottom: 80px;
+      width: 100%;
+      justify-content: space-between;
+    }
+    
+    .description p{
+      width: 100%;
+      display: block;
+    }
+  
+  }
+  @media (max-width: 1224px) {
+  
+    .About {
+      justify-content: space-evenly;
+      font-size: 15px;
+      max-width: 100%;
+    }
+    .About p{
+      max-width: 100%;
+    }
+    .description p{
+      width: 100%;
+      display: block;
+    } */
+    
+  /* } */
+
