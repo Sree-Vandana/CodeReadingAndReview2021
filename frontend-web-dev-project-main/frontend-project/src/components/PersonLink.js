@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import "../styles/personInfo.css";
 
 /**
- *
- * @param {*} param0
- * @returns a person's name properly linked so it will open the person's page
- * when selected
+ * function to fetch actors information, by providing their first, last name and ID assosiated with theor name sin TMDB Database.
+ * @param {Number} id - actor ID
+ * @param {String} last - last name of actor
+ * @param {String} personName - first name of the actor
+ * @returns a person's name properly linked so it will open the person's page when selected
  */
 const PersonLink = ({ id, last, personName }) => {
   // error handling so we don't swallow exceptions from actual bugs in components

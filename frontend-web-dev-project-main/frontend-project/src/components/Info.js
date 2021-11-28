@@ -5,11 +5,10 @@ import Person from "./PersonInfo";
 import "../styles/Info.css";
 
 /**
- *
- * @param {mediaType, imdbID, tmdbID} props
- * mediaType => valid strings: movie, tv, person
- * imdbID => if the returned object, using this id, is valid, the id was valid
- * tmdbID => if the returned object, using this id, is valid, the id was valid
+ * function to fetch information about the movie, based on parameters present in URL
+ * @param {String} mediaType - valid strings: movie, tv, person
+ * @param {Number} imdbID - if the returned object, using this id, is valid, the id was valid
+ * @param {Number} tmdbID - if the returned object, using this id, is valid, the id was valid
  * @returns Info page based on params in the url
  */
 export default function Info(props) {

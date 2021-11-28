@@ -4,6 +4,11 @@ import "../styles/ListMedia.css";
 import PosterGrid from "./PosterGrid";
 import Pagination from "react-js-pagination";
 
+/**
+ * Function to create list of all Media
+ * @param {Object} props 
+ * @returns return the UI container with the Movies and Pagination children components
+ */
 const ListMedia = (props) => {
   // error handling so we don't swallow exceptions from actual bugs in components
   const [error, setError] = useState(null);

@@ -1,4 +1,9 @@
 import "../styles/About.css";
+
+/**
+ * React function for About page.
+ * @returns This returns an about page, describing what the app is abut and who developed the app.
+ */
 export default function About() {
 
     return (

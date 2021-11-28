@@ -21,7 +21,10 @@ import {
   // NavDropdown,
 } from "react-bootstrap";
 
-// Main class => the navbar + routing
+/**
+ * This is the Main class of the application. Contains Routing Logic for navbar
+ * @returns the Navbar UI component and the body (based on selected NavBar element).
+ */
 class Main extends React.Component {
   constructor(props) {
     super(props);

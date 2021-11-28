@@ -2,7 +2,7 @@ import ListMedia from "./ListMedia";
 
 /**
  * Invokes ListMedia with itself identified as the Top Rated TV Show page with the page #
- * @param {*} props
+ * @param {Object} props
  * @returns List of movies with pagination
  */
 export default function TopRatedTVShows(props) {

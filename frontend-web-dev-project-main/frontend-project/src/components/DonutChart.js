@@ -3,7 +3,7 @@ import "../styles/DonutChart.css";
 import "../styles/Info.css";
 
 /**
- * @param {*} param
+ * @param {Object} rating
  * @returns Doughnut chart, with label, in a div
  */
 const DonutChart = ({ rating }) => {

@@ -4,8 +4,8 @@ import Pagination from "react-js-pagination";
 
 /**
  * Lists the results of the queried string in a poster grid layout with pagination
- * @param {*} props
- * @returns
+ * @param {Object} props
+ * @returns UI element for a poster grid with pagination.
  */
 export default function Results(props) {
   const [error, setError] = useState(null);

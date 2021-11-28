@@ -3,8 +3,8 @@ import TMDBCard from "./TMDBCard";
 import "../styles/personInfo.css";
 
 /**
- *
- * @param {*} param0
+ * function to return information about an actor.
+ * @param {String} tmdbID
  * @returns information fetched from TMDB, if successfulled fetched
  */
 const PersonInfo = ({ tmdbID }) => {
