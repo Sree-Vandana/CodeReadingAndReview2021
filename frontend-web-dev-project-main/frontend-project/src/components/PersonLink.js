@@ -9,10 +9,8 @@ import "../styles/personInfo.css";
  * @returns a person's name properly linked so it will open the person's page when selected
  */
 const PersonLink = ({ id, last, personName }) => {
-  // error handling so we don't swallow exceptions from actual bugs in components
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null);  // error handling for exceptions.
   let [person, setPerson] = useState();
-  // let [credits, setCredits] = useState();
   const [loading, setLoading] = useState(false);
 
   let baseURL =

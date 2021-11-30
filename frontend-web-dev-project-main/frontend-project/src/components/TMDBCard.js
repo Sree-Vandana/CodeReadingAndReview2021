@@ -10,8 +10,7 @@ import { useState, useEffect } from "react";
  * @returns a linked poster of the media (movie, tv show, person)
  */
 const TMDBCard = ({ type, id, element, title, year }) => {
-  // error handling so we don't swallow exceptions from actual bugs in components
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null);  // error handling for exceptions.
   const [url, setURL] = useState();
   const [loading, setLoading] = useState(false);
   const [omdb, setOmdb] = useState(false);
@@ -24,7 +23,6 @@ const TMDBCard = ({ type, id, element, title, year }) => {
     id = id + "/external_ids";
   }
 
-  // console.log(id);
   useEffect(() => {
     const fetchMedia = async () => {
       setLoading(true);
@@ -49,9 +47,8 @@ const TMDBCard = ({ type, id, element, title, year }) => {
             setLoading(false);
           }
         );
-      // console.log(res);
 
-      // making a call to omdb if there is no poster from tmdb
+      // INFO: making a call to omdb if there is no poster from tmdb
       if (type === "/tv/" || type === "/movie/") {
         if (!element["poster_path"]) {
           // console.log(element);
@@ -88,7 +85,7 @@ const TMDBCard = ({ type, id, element, title, year }) => {
   } else if (loading) {
     return <></>;
   } else {
-    // error checking for edge cases when title isn't named something we would normally expect
+    // INFO: error checking for edge cases when title isn't named something we would normally expect
     if (!(`title` in element)) {
       if (!(`original_title` in element)) {
         title = `name`;

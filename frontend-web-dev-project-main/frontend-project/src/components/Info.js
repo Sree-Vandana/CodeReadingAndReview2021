@@ -12,27 +12,17 @@ import "../styles/Info.css";
  * @returns Info page based on params in the url
  */
 export default function Info(props) {
-  // error handling so we don't swallow exceptions from actual bugs in components
-  const [error, setError] = useState(null);
-  // Array of objects for our output
-  const [media, setMedia] = useState([]);
-  // Array of ratings, if omdb call was successful, to output
+  const [error, setError] = useState(null); // error handling for exceptions
+  const [media, setMedia] = useState([]);   // Array of objects for our output
   const [ratings, setRatings] = useState();
-  // If all the API fetch calls have been completed
   const [loading, setLoading] = useState(false);
-  // Flag if omdb call was successful
-  const [omdb, setOmdb] = useState(true);
-  // Array of objects, if omdb call wasn't successful, to output
-  const [tmdb, setTmdb] = useState([]);
-
+  const [omdb, setOmdb] = useState(true);   // Flag if omdb call was successful
+  const [tmdb, setTmdb] = useState([]);   // Array of objects, if omdb call wasn't successful, to output
   const [type] = useState(props["match"]["params"]["mediaType"]);
   const [id] = useState(props["match"]["params"]["imdbID"]);
   const [tmdbID] = useState(props["match"]["params"]["tmdbID"]);
 
   useEffect(() => {
-    // fetches the media and tmdb arrays, and potentially the ratings array
-    // if call to omdb API was successful, omdb hook will be true, else false
-    // and tmdb call made
     const fetchMedia = async () => {
       setLoading(true);
       const res = await fetch(
@@ -89,14 +79,14 @@ export default function Info(props) {
 
         setMedia(specificRes);
 
-        setOmdb(false); // we couldn't use omdb
+        setOmdb(false); // INFO: we couldn't use omdb
       } else {
         setMedia(res);
 
         setRatings(res["Ratings"]);
       }
 
-      // Always grab the list of credits - tmdb contains the most and we can link to profiles
+      // INFO: Always grab the list of credits - tmdb contains the most and we can link to profiles
       let resCredits = [];
       if (id !== "null")
         resCredits = await fetch(
@@ -139,7 +129,7 @@ export default function Info(props) {
   } else if (loading) {
     return <></>;
   } else {
-    // if we have omdb, media, and tmdb isn't empty aka movie
+    // INFO: if we have omdb, media, and tmdb isn't empty aka movie
     if (omdb && media && tmdb !== []) {
       return (
         <div className="container">

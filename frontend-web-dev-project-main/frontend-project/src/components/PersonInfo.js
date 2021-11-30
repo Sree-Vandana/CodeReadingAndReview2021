@@ -8,8 +8,7 @@ import "../styles/personInfo.css";
  * @returns information fetched from TMDB, if successfulled fetched
  */
 const PersonInfo = ({ tmdbID }) => {
-  // error handling so we don't swallow exceptions from actual bugs in components
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null);  // error handling for exceptions 
   const [loading, setLoading] = useState(true);
   const [person, setPerson] = useState([]);
   const [credits, setCredits] = useState([]);
@@ -109,7 +108,7 @@ const PersonInfo = ({ tmdbID }) => {
         {person["name"] ? (
           <h1>{person["name"]}</h1>
         ) : (
-          // if the id in the url isn't a valid id
+          // INFO: if the id in the url isn't a valid id
           <h1>Unknown actor</h1>
         )}
 

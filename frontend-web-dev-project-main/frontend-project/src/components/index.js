@@ -7,6 +7,9 @@ import TopRatedTVShows from "./TopRatedTVShows";
 import Info from "./Info";
 import About from "./About";
 
+/**
+ * A Sinle export statement, to export out all the components developed.
+ */
 export {
   PopMovies,
   PopTVShows,
