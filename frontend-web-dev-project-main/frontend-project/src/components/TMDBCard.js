@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 
 /**
- * @param {*} param0
+ * function to generate poster of the movie.
+ * @param {String} type - movie type
+ * @param {Number} id - movie ID
+ * @param {Object} element 
+ * @param {String} title - movie title
+ * @param {Number} year - year of movie release
  * @returns a linked poster of the media (movie, tv show, person)
  */
 const TMDBCard = ({ type, id, element, title, year }) => {

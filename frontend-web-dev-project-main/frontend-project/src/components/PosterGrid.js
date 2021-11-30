@@ -1,10 +1,11 @@
 import TMDBCard from "./TMDBCard";
 
 /**
- * Loads items array with each of the movies as a grid item, and a TMDB movie card
- * that is clickable to redirect to that movie's information page
- * @param {*} param0
- * @returns
+ * Loads items array with each of the movies as a grid item, and a TMDB movie card that is clickable to redirect to that movie's information page
+ * @param {String} media - type of media
+ * @param {boolean} loading - UI elemnt in loading state or not.
+ * @param {String} param - end part of the URL eg: "/tv/popular" or "/movie/popular"
+ * @returns array items containing grid items about movies.
  */
 const PosterGrid = ({ media, loading, param }) => {
   if (loading) {
