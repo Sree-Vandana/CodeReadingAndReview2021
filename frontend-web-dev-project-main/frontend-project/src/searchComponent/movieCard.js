@@ -7,8 +7,7 @@ import "./movieCard.css";
  */
 export const MovieCard = (props) => {
   let { each } = props;
-  let baseURL =
-    window.location.protocol + "//" + window.location.host + "/info/";
+  let baseURL =  window.location.protocol + "//" + window.location.host + "/info/";
 
   return (
     <div className="card-container">

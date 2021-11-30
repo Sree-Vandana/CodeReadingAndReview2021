@@ -10,22 +10,15 @@ import "../styles/personInfo.css";
  */
 const PersonLink = ({ id, last, personName }) => {
   const [error, setError] = useState(null);  // error handling for exceptions.
-  let [person, setPerson] = useState();
   const [loading, setLoading] = useState(false);
 
-  let baseURL =
-    window.location.protocol + "//" + window.location.host + "/info/";
+  let [person, setPerson] = useState();
+  let baseURL = window.location.protocol + "//" + window.location.host + "/info/";
 
   useEffect(() => {
     const fetchInfo = async () => {
       setLoading(true);
-      await fetch(
-        "https://api.themoviedb.org/3/person/" +
-          id +
-          "?api_key=" +
-          process.env.REACT_APP_TMDB_API_KEY +
-          "&language=en-US"
-      )
+      await fetch( "https://api.themoviedb.org/3/person/" + id + "?api_key=" + process.env.REACT_APP_TMDB_API_KEY + "&language=en-US" )
         .then((res) => res.json())
         .then(
           (result) => {
