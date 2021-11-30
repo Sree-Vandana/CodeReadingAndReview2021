@@ -11,7 +11,6 @@ import "../styles/personInfo.css";
 const PersonLink = ({ id, last, personName }) => {
   const [error, setError] = useState(null);  // error handling for exceptions.
   let [person, setPerson] = useState();
-  // let [credits, setCredits] = useState();
   const [loading, setLoading] = useState(false);
 
   let baseURL =

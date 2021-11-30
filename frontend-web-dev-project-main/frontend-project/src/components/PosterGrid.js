@@ -16,7 +16,6 @@ const PosterGrid = ({ media, loading, param }) => {
 
     if (media) {
       // INFO: These will be used to get correct information from the returned object depending on media type (movie vs tv show)
-      // console.log(media);
       media.forEach((element) => {
         let title = "title";
         let year = "release_date";

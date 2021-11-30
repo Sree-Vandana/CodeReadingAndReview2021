@@ -23,7 +23,6 @@ const TMDBCard = ({ type, id, element, title, year }) => {
     id = id + "/external_ids";
   }
 
-  // console.log(id);
   useEffect(() => {
     const fetchMedia = async () => {
       setLoading(true);
@@ -48,7 +47,6 @@ const TMDBCard = ({ type, id, element, title, year }) => {
             setLoading(false);
           }
         );
-      // console.log(res);
 
       // INFO: making a call to omdb if there is no poster from tmdb
       if (type === "/tv/" || type === "/movie/") {
