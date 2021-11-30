@@ -15,7 +15,7 @@ const PosterGrid = ({ media, loading, param }) => {
     let count = 1; // so we can uniquely identify our key values
 
     if (media) {
-      // These will be used to get correct information from the returned object depending on media type (movie vs tv show)
+      // INFO: These will be used to get correct information from the returned object depending on media type (movie vs tv show)
       // console.log(media);
       media.forEach((element) => {
         let title = "title";

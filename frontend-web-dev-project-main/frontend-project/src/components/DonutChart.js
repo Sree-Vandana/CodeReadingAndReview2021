@@ -7,17 +7,17 @@ import "../styles/Info.css";
  * @returns Doughnut chart, with label, in a div
  */
 const DonutChart = ({ rating }) => {
-  // we only take a certain substring to get the numerical values
+  // CLARIFICATION: we only take a certain substring to get the numerical values
   let ratingVal = rating["Value"].substring(0, rating["Value"].indexOf("/"));
   if (!ratingVal) {
     ratingVal = rating["Value"].substring(0, rating["Value"].indexOf("%"));
   }
-  // we assume the default max is 100 unless it is TMDB, then it is 10
+  // CLARIFICATION: we assume the default max is 100 unless it is TMDB, then it is 10
   let maxScore = 100;
   if (rating["Source"] === "Internet Movie Database") {
     maxScore = 10;
   }
-  // we premake the data object
+  // CLARIFICATION: we premake the data object
   const data = {
     labels: ["Rating", "Rating from max score"],
     datasets: [
