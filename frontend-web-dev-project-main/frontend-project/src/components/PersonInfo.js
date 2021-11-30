@@ -16,13 +16,7 @@ const PersonInfo = ({ tmdbID }) => {
   useEffect(() => {
     const fetchInfo = async () => {
       setLoading(true);
-      await fetch(
-        "https://api.themoviedb.org/3/person/" +
-          tmdbID +
-          "?api_key=" +
-          process.env.REACT_APP_TMDB_API_KEY +
-          "&language=en-US"
-      )
+      await fetch( "https://api.themoviedb.org/3/person/" + tmdbID + "?api_key=" + process.env.REACT_APP_TMDB_API_KEY + "&language=en-US" )
         .then((res) => res.json())
         .then(
           (res) => {
@@ -33,13 +27,7 @@ const PersonInfo = ({ tmdbID }) => {
           }
         );
 
-      await fetch(
-        "https://api.themoviedb.org/3/person/" +
-          tmdbID +
-          "/combined_credits?api_key=" +
-          process.env.REACT_APP_TMDB_API_KEY +
-          "&language=en-US"
-      )
+      await fetch( "https://api.themoviedb.org/3/person/" + tmdbID + "/combined_credits?api_key=" + process.env.REACT_APP_TMDB_API_KEY + "&language=en-US" )
         .then((res) => res.json())
         .then(
           (res) => {
@@ -59,8 +47,7 @@ const PersonInfo = ({ tmdbID }) => {
   } else if (loading) {
     return <></>;
   } else {
-    let image =
-      "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
+    let image = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
     if (person) {
       if (person["profile_path"]) {
         image = "https://image.tmdb.org/t/p/original/" + person["profile_path"];

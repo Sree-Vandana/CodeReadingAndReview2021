@@ -16,8 +16,7 @@ const TMDBCard = ({ type, id, element, title, year }) => {
   const [omdb, setOmdb] = useState(false);
   const [secondaryUrl, setURL2] = useState();
 
-  let baseURL =
-    window.location.protocol + "//" + window.location.host + "/info/";
+  let baseURL = window.location.protocol + "//" + window.location.host + "/info/";
 
   if (type === "/tv/") {
     id = id + "/external_ids";
@@ -27,14 +26,7 @@ const TMDBCard = ({ type, id, element, title, year }) => {
     const fetchMedia = async () => {
       setLoading(true);
       let holdId;
-      await fetch(
-        "https://api.themoviedb.org/3" +
-          type +
-          id +
-          "?api_key=" +
-          process.env.REACT_APP_TMDB_API_KEY +
-          "&language=en-US"
-      )
+      await fetch("https://api.themoviedb.org/3" + type + id + "?api_key=" + process.env.REACT_APP_TMDB_API_KEY + "&language=en-US")
         .then((res) => res.json())
         .then(
           (result) => {
@@ -52,12 +44,7 @@ const TMDBCard = ({ type, id, element, title, year }) => {
       if (type === "/tv/" || type === "/movie/") {
         if (!element["poster_path"]) {
           // console.log(element);
-          await fetch(
-            "https://www.omdbapi.com/?i=" +
-              holdId +
-              "&apikey=" +
-              process.env.REACT_APP_OMDB_API_KEY
-          )
+          await fetch( "https://www.omdbapi.com/?i=" + holdId + "&apikey=" + process.env.REACT_APP_OMDB_API_KEY )
             .then((res) => res.json())
             .then(
               (result) => {
@@ -94,8 +81,7 @@ const TMDBCard = ({ type, id, element, title, year }) => {
       }
     }
 
-    let image =
-      "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
+    let image = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
     if (!element["poster_path"] && omdb && !element["backdrop_path"]) {
       image = secondaryUrl;
     } else if (element["media_type"] === "person" && element["profile_path"]) {

@@ -25,12 +25,7 @@ export default function Info(props) {
   useEffect(() => {
     const fetchMedia = async () => {
       setLoading(true);
-      const res = await fetch(
-        "https://www.omdbapi.com/?i=" +
-          id +
-          "&apikey=" +
-          process.env.REACT_APP_OMDB_API_KEY
-      )
+      const res = await fetch( "https://www.omdbapi.com/?i=" + id + "&apikey=" + process.env.REACT_APP_OMDB_API_KEY )
         .then(
           (res) => res.json(),
           (error) => {
@@ -40,22 +35,11 @@ export default function Info(props) {
         .catch(() => setOmdb(false));
 
       // If omdb doesn't have the media, thus we need to get the information from tmdb
-      if (
-        res === undefined ||
-        res.length === 0 ||
-        res["Response"] === "False"
-      ) {
+      if ( res === undefined ||  res.length === 0 ||  res["Response"] === "False" ) {
         let specificRes = [];
         if (type !== "person" && type !== "null" && id !== "null") {
-          specificRes = await fetch(
-            "https://api.themoviedb.org/3/" +
-              type +
-              "/" +
-              id +
-              "?api_key=" +
-              process.env.REACT_APP_TMDB_API_KEY +
-              "&language=en-US"
-          ).then(
+          specificRes = await fetch( "https://api.themoviedb.org/3/" + type + "/" +id + "?api_key=" + process.env.REACT_APP_TMDB_API_KEY + "&language=en-US")
+          .then(
             (res) => res.json(),
             (error) => {
               setError(error);
@@ -63,62 +47,33 @@ export default function Info(props) {
           );
         }
         if (specificRes.length === 0 || specificRes["success"] === false) {
-          specificRes = await fetch(
-            "https://api.themoviedb.org/3/" +
-              type +
-              "/" +
-              tmdbID +
-              "?api_key=" +
-              process.env.REACT_APP_TMDB_API_KEY +
-              "&language=en-US"
-          ).then(
+          specificRes = await fetch( "https://api.themoviedb.org/3/" + type + "/" + tmdbID + "?api_key=" + process.env.REACT_APP_TMDB_API_KEY + "&language=en-US")
+          .then(
             (res) => res.json(),
             (error) => setError(error)
           );
         }
-
         setMedia(specificRes);
-
         setOmdb(false); // INFO: we couldn't use omdb
       } else {
         setMedia(res);
-
         setRatings(res["Ratings"]);
       }
 
       // INFO: Always grab the list of credits - tmdb contains the most and we can link to profiles
       let resCredits = [];
       if (id !== "null")
-        resCredits = await fetch(
-          "https://api.themoviedb.org/3/" +
-            type +
-            "/" +
-            id +
-            "/credits?api_key=" +
-            process.env.REACT_APP_TMDB_API_KEY +
-            "&language=en-US"
-        )
+        resCredits = await fetch( "https://api.themoviedb.org/3/" + type + "/" + id +  "/credits?api_key=" + process.env.REACT_APP_TMDB_API_KEY +  "&language=en-US" )
           .then((res) => res.json())
           .catch((error) => console.error("fetch error:", error));
 
       if (
-        (resCredits.length === undefined || resCredits.length === 0) &&
-        tmdbID
-      ) {
-        resCredits = await fetch(
-          "https://api.themoviedb.org/3/" +
-            type +
-            "/" +
-            tmdbID +
-            "/credits?api_key=" +
-            process.env.REACT_APP_TMDB_API_KEY +
-            "&language=en-US"
-        )
+        (resCredits.length === undefined || resCredits.length === 0) && tmdbID ) {
+        resCredits = await fetch( "https://api.themoviedb.org/3/" + type + "/" +  tmdbID + "/credits?api_key=" + process.env.REACT_APP_TMDB_API_KEY + "&language=en-US")
           .then((res) => res.json())
           .catch((error) => console.error("fetch error:", error));
       }
       setTmdb(resCredits);
-
       setLoading(false);
     };
     fetchMedia();

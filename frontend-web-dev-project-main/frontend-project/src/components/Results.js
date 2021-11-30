@@ -32,14 +32,7 @@ export default function Results(props) {
   useEffect(() => {
     const fetchMedia = async () => {
       setLoading(true);
-      await fetch(
-        "https://api.themoviedb.org/3/search/multi?query=" +
-          props["match"]["params"]["title"] +
-          "&api_key=" +
-          process.env.REACT_APP_TMDB_API_KEY +
-          "&language=en-US&page=" +
-          page
-      )
+      await fetch( "https://api.themoviedb.org/3/search/multi?query=" + props["match"]["params"]["title"] + "&api_key=" + process.env.REACT_APP_TMDB_API_KEY + "&language=en-US&page=" + page )
         .then((res) => res.json())
         .then(
           (res) => {
