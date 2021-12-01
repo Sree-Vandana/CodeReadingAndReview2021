@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import "../styles/NotFound.css";
-
+import "../UI/css/NotFound.css";
 /**
  *
  * @returns a funny not found page I found online at https://freefrontend.com/html-funny-404-pages/

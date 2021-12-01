@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import "../styles/personInfo.css";
+import "../UI/css/personInfo.css";
+
 
 /**
  *

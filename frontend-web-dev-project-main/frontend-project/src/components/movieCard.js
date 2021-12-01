@@ -1,4 +1,4 @@
-import "../styles/movieCard.css";
+import "../UI/css/movieCard.css";
 export const MovieCard = (props) => {
   let { each } = props;
   //console.log(each);

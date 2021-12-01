@@ -1,7 +1,6 @@
 import { Doughnut } from "react-chartjs-2";
-import "../styles/DonutChart.css";
-import "../styles/Info.css";
-
+import "../UI/css/DonutChart.css";
+import "../UI/css/Info.css";
 /**
  * @param {*} param
  * @returns Doughnut chart, with label, in a div

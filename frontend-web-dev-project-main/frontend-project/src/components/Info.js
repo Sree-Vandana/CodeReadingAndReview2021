@@ -2,7 +2,7 @@ import DonutChart from "./DonutChart";
 import { useState, useEffect } from "react";
 import PersonLink from "./PersonLink";
 import Person from "./PersonInfo";
-import "../styles/Info.css";
+import "../UI/css/Info.css";
 
 /**
  *

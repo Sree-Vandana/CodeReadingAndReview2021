@@ -12,7 +12,7 @@ h1 {
 #root {
   color: rgb(240, 248, 255);
   background: linear-gradient(rgba(1, 1, 1, 0.9), rgba(34, 33, 33, 0.9)),
-    url("./background.jpg");
+    url("../src/UI/img/background.jpg");
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
