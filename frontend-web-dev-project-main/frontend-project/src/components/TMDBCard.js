@@ -26,7 +26,14 @@ const TMDBCard = ({ type, id, element, title, year }) => {
     const fetchMedia = async () => {
       setLoading(true);
       let holdId;
-      await fetch("https://api.themoviedb.org/3" + type + id + "?api_key=" + process.env.REACT_APP_TMDB_API_KEY + "&language=en-US")
+      await fetch(
+          "https://api.themoviedb.org/3" + 
+          type + 
+          id + 
+          "?api_key=" + 
+          process.env.REACT_APP_TMDB_API_KEY + 
+          "&language=en-US"
+        )
         .then((res) => res.json())
         .then(
           (result) => {
@@ -44,7 +51,12 @@ const TMDBCard = ({ type, id, element, title, year }) => {
       if (type === "/tv/" || type === "/movie/") {
         if (!element["poster_path"]) {
           // console.log(element);
-          await fetch( "https://www.omdbapi.com/?i=" + holdId + "&apikey=" + process.env.REACT_APP_OMDB_API_KEY )
+          await fetch( 
+              "https://www.omdbapi.com/?i=" + 
+              holdId + 
+              "&apikey=" + 
+              process.env.REACT_APP_OMDB_API_KEY 
+            )
             .then((res) => res.json())
             .then(
               (result) => {
