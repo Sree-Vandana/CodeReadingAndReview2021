@@ -20,7 +20,14 @@ const ListMedia = (props) => {
   useEffect(() => {
     const fetchMedia = async () => {
       setLoading(true);
-      await fetch("https://api.themoviedb.org/3" + param + "?api_key=" + process.env.REACT_APP_TMDB_API_KEY + "&language=en-US&page=" + page )
+      await fetch(
+          "https://api.themoviedb.org/3" + 
+          param + 
+          "?api_key=" + 
+          process.env.REACT_APP_TMDB_API_KEY + 
+          "&language=en-US&page=" + 
+          page 
+        )
         .then((res) => res.json())
         .then(
           (result) => {
