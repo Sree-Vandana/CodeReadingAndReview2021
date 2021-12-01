@@ -11,9 +11,8 @@ import "../styles/personInfo.css";
 const PersonLink = ({ id, last, personName }) => {
   const [error, setError] = useState(null);  // error handling for exceptions.
   const [loading, setLoading] = useState(false);
-
-  let [person, setPerson] = useState();
-  let baseURL = window.location.protocol + "//" + window.location.host + "/info/";
+  const [person, setPerson] = useState();
+  const baseURL = window.location.protocol + "//" + window.location.host + "/info/";
 
   useEffect(() => {
     const fetchInfo = async () => {

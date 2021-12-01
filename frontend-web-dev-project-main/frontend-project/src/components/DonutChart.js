@@ -9,7 +9,6 @@ import "../styles/Info.css";
 const DonutChart = ({ rating }) => {
   // INFO: we only take a certain substring to get the numerical values
   let ratingVal = rating["Value"].substring(0, rating["Value"].indexOf("/"));
-  
   if (!ratingVal) {
     ratingVal = rating["Value"].substring(0, rating["Value"].indexOf("%"));
   }
