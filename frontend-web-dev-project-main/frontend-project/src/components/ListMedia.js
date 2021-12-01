@@ -4,9 +4,13 @@ import "../UI/css/ListMedia.css";
 import PosterGrid from "./PosterGrid";
 import Pagination from "react-js-pagination";
 
+/**
+ * Function to create list of all Media
+ * @param {Object} props 
+ * @returns return the UI container with the Movies and Pagination children components
+ */
 const ListMedia = (props) => {
-  // error handling so we don't swallow exceptions from actual bugs in components
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null);  // error handling for exceptions.
   const [media, setMedia] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(parseInt(props["page"]));
@@ -17,13 +21,13 @@ const ListMedia = (props) => {
     const fetchMedia = async () => {
       setLoading(true);
       await fetch(
-        "https://api.themoviedb.org/3" +
-          param +
-          "?api_key=" +
-          process.env.REACT_APP_TMDB_API_KEY +
-          "&language=en-US&page=" +
-          page
-      )
+          "https://api.themoviedb.org/3" + 
+          param + 
+          "?api_key=" + 
+          process.env.REACT_APP_TMDB_API_KEY + 
+          "&language=en-US&page=" + 
+          page 
+        )
         .then((res) => res.json())
         .then(
           (result) => {
@@ -39,7 +43,7 @@ const ListMedia = (props) => {
     };
 
     fetchMedia();
-  }, [param, page]); // there is a dependency on param being initialized - if we could get rid of it it'd be nice
+  }, [param, page]); // TODO: there is a dependency on param being initialized - if we could get rid of it it'd be nice
 
   function changePage(event) {
     window.history.pushState(
@@ -60,7 +64,6 @@ const ListMedia = (props) => {
   } else if (loading) {
     return <></>;
   } else {
-    // return the container with the Movies and Pagination children components
     return (
       <>
         <div className="container">

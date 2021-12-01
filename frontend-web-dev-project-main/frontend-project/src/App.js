@@ -18,10 +18,12 @@ import {
   FormControl,
   Button,
   FormGroup,
-  // NavDropdown,
 } from "react-bootstrap";
 
-// Main class => the navbar + routing
+/**
+ * This is the Main class of the application. Contains Routing Logic for navbar
+ * @returns the Navbar UI component and the body (based on selected NavBar element).
+ */
 class Main extends React.Component {
   constructor(props) {
     super(props);
@@ -32,9 +34,7 @@ class Main extends React.Component {
     this.afterSubmission = this.afterSubmission.bind(this);
   }
 
-  handleRoute = (route) => () => {
-    this.props.history.push({ pathname: route });
-  };
+  handleRoute = (route) => () => this.props.history.push({ pathname: route });
 
   handleSearchInput = (event) => {
     this.setState({
@@ -45,9 +45,7 @@ class Main extends React.Component {
   handleSearchSubmit = () => {
     if (document.getElementById("searchBar").value) {
       this.props.history.replace({
-        pathname:
-          "/results/" +
-          encodeURIComponent(document.getElementById("searchBar").value),
+        pathname: "/results/" + encodeURIComponent(document.getElementById("searchBar").value),
         state: {
           searchText: document.getElementById("searchBar").value,
         },
@@ -58,14 +56,11 @@ class Main extends React.Component {
   };
 
   handleKeyPress = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter") 
       this.handleSearchSubmit();
-    }
   };
 
-  afterSubmission(event) {
-    event.preventDefault();
-  }
+  afterSubmission = (event) => event.preventDefault();
 
   render() {
     return (
@@ -128,6 +123,7 @@ class Main extends React.Component {
                 Search
               </Button>
             </Form>
+            
           </Navbar.Collapse>
         </Navbar>
         <Switch>

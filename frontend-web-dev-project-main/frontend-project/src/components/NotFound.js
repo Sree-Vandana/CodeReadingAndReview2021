@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "../UI/css/NotFound.css";
 /**
- *
+ * Function to handle "Not Found" status
  * @returns a funny not found page I found online at https://freefrontend.com/html-funny-404-pages/
  */
 export default function NotFound() {

@@ -1,37 +1,38 @@
 import { useState, useEffect } from "react";
 
 /**
- * @param {*} param0
+ * function to generate poster of the movie.
+ * @param {String} type - movie type
+ * @param {Number} id - movie ID
+ * @param {Object} element 
+ * @param {String} title - movie title
+ * @param {Number} year - year of movie release
  * @returns a linked poster of the media (movie, tv show, person)
  */
 const TMDBCard = ({ type, id, element, title, year }) => {
-  // error handling so we don't swallow exceptions from actual bugs in components
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null);  // error handling for exceptions.
   const [url, setURL] = useState();
   const [loading, setLoading] = useState(false);
   const [omdb, setOmdb] = useState(false);
   const [secondaryUrl, setURL2] = useState();
-
-  let baseURL =
-    window.location.protocol + "//" + window.location.host + "/info/";
+  const baseURL = window.location.protocol + "//" + window.location.host + "/info/";
 
   if (type === "/tv/") {
     id = id + "/external_ids";
   }
 
-  // console.log(id);
   useEffect(() => {
     const fetchMedia = async () => {
       setLoading(true);
       let holdId;
       await fetch(
-        "https://api.themoviedb.org/3" +
-          type +
-          id +
-          "?api_key=" +
-          process.env.REACT_APP_TMDB_API_KEY +
+          "https://api.themoviedb.org/3" + 
+          type + 
+          id + 
+          "?api_key=" + 
+          process.env.REACT_APP_TMDB_API_KEY + 
           "&language=en-US"
-      )
+        )
         .then((res) => res.json())
         .then(
           (result) => {
@@ -44,18 +45,17 @@ const TMDBCard = ({ type, id, element, title, year }) => {
             setLoading(false);
           }
         );
-      // console.log(res);
 
-      // making a call to omdb if there is no poster from tmdb
+      // INFO: making a call to omdb if there is no poster from tmdb
       if (type === "/tv/" || type === "/movie/") {
         if (!element["poster_path"]) {
           // console.log(element);
-          await fetch(
-            "https://www.omdbapi.com/?i=" +
-              holdId +
-              "&apikey=" +
-              process.env.REACT_APP_OMDB_API_KEY
-          )
+          await fetch( 
+              "https://www.omdbapi.com/?i=" + 
+              holdId + 
+              "&apikey=" + 
+              process.env.REACT_APP_OMDB_API_KEY 
+            )
             .then((res) => res.json())
             .then(
               (result) => {
@@ -83,7 +83,7 @@ const TMDBCard = ({ type, id, element, title, year }) => {
   } else if (loading) {
     return <></>;
   } else {
-    // error checking for edge cases when title isn't named something we would normally expect
+    // INFO: error checking for edge cases when title isn't named something we would normally expect
     if (!(`title` in element)) {
       if (!(`original_title` in element)) {
         title = `name`;
@@ -92,8 +92,7 @@ const TMDBCard = ({ type, id, element, title, year }) => {
       }
     }
 
-    let image =
-      "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
+    let image = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
     if (!element["poster_path"] && omdb && !element["backdrop_path"]) {
       image = secondaryUrl;
     } else if (element["media_type"] === "person" && element["profile_path"]) {

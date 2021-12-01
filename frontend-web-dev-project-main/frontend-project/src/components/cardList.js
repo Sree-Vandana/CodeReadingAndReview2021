@@ -2,6 +2,10 @@ import React from "react";
 import "../UI/css/cardList.css";
 import { MovieCard } from "./movieCard";
 
+/**
+ * This is a function to display all movie cards.
+ * @returns List of movie cards UI 
+ */
 export const CardList = (props) => {
   return (
     <>
@@ -14,4 +18,5 @@ export const CardList = (props) => {
     </>
   );
 };
+
 export default CardList;

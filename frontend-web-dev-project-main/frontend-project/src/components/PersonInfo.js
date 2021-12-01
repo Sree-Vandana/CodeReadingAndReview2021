@@ -4,13 +4,12 @@ import "../UI/css/personInfo.css";
 
 
 /**
- *
- * @param {*} param0
+ * function to return information about an actor.
+ * @param {String} tmdbID
  * @returns information fetched from TMDB, if successfulled fetched
  */
 const PersonInfo = ({ tmdbID }) => {
-  // error handling so we don't swallow exceptions from actual bugs in components
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null);  // error handling for exceptions 
   const [loading, setLoading] = useState(true);
   const [person, setPerson] = useState([]);
   const [credits, setCredits] = useState([]);
@@ -18,13 +17,13 @@ const PersonInfo = ({ tmdbID }) => {
   useEffect(() => {
     const fetchInfo = async () => {
       setLoading(true);
-      await fetch(
-        "https://api.themoviedb.org/3/person/" +
-          tmdbID +
-          "?api_key=" +
-          process.env.REACT_APP_TMDB_API_KEY +
-          "&language=en-US"
-      )
+      await fetch( 
+          "https://api.themoviedb.org/3/person/" + 
+          tmdbID + 
+          "?api_key=" + 
+          process.env.REACT_APP_TMDB_API_KEY + 
+          "&language=en-US" 
+        )
         .then((res) => res.json())
         .then(
           (res) => {
@@ -35,13 +34,13 @@ const PersonInfo = ({ tmdbID }) => {
           }
         );
 
-      await fetch(
-        "https://api.themoviedb.org/3/person/" +
-          tmdbID +
-          "/combined_credits?api_key=" +
-          process.env.REACT_APP_TMDB_API_KEY +
-          "&language=en-US"
-      )
+      await fetch( 
+          "https://api.themoviedb.org/3/person/" + 
+          tmdbID + 
+          "/combined_credits?api_key=" + 
+          process.env.REACT_APP_TMDB_API_KEY + 
+          "&language=en-US" 
+        )
         .then((res) => res.json())
         .then(
           (res) => {
@@ -61,8 +60,7 @@ const PersonInfo = ({ tmdbID }) => {
   } else if (loading) {
     return <></>;
   } else {
-    let image =
-      "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
+    let image = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
     if (person) {
       if (person["profile_path"]) {
         image = "https://image.tmdb.org/t/p/original/" + person["profile_path"];
@@ -110,7 +108,7 @@ const PersonInfo = ({ tmdbID }) => {
         {person["name"] ? (
           <h1>{person["name"]}</h1>
         ) : (
-          // if the id in the url isn't a valid id
+          // INFO: if the id in the url isn't a valid id
           <h1>Unknown actor</h1>
         )}
 

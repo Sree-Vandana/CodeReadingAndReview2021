@@ -4,14 +4,14 @@ import Pagination from "react-js-pagination";
 
 /**
  * Lists the results of the queried string in a poster grid layout with pagination
- * @param {*} props
- * @returns
+ * @param {Object} props
+ * @returns UI element for a poster grid with pagination.
  */
 export default function Results(props) {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  let [resultsArray, setResults] = useState([]);
-  let [page, setPage] = useState(parseInt(props["match"]["params"]["page"]));
+  const [resultsArray, setResults] = useState([]);
+  const [page, setPage] = useState(parseInt(props["match"]["params"]["page"]));
   const [total_pages, setTotal_pages] = useState(1);
 
   function changePage(event) {
@@ -32,14 +32,14 @@ export default function Results(props) {
   useEffect(() => {
     const fetchMedia = async () => {
       setLoading(true);
-      await fetch(
-        "https://api.themoviedb.org/3/search/multi?query=" +
-          props["match"]["params"]["title"] +
-          "&api_key=" +
-          process.env.REACT_APP_TMDB_API_KEY +
-          "&language=en-US&page=" +
-          page
-      )
+      await fetch( 
+          "https://api.themoviedb.org/3/search/multi?query=" + 
+          props["match"]["params"]["title"] + 
+          "&api_key=" + 
+          process.env.REACT_APP_TMDB_API_KEY + 
+          "&language=en-US&page=" + 
+          page 
+        )
         .then((res) => res.json())
         .then(
           (res) => {
