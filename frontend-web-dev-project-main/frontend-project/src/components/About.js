@@ -1,4 +1,4 @@
-import "../styles/About.css";
+import "../UI/css/About.css";
 
 /**
  * React function for About page.
@@ -23,7 +23,7 @@ export default function About() {
           </div>
           <div className="description">
             <h3>
-              <center>Description</center>
+              <center>Project Description</center>
             </h3>
             <p>
               <center>

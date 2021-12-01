@@ -1,4 +1,4 @@
-import "./movieCard.css";
+import "../UI/css/movieCard.css";
 
 /**
  * This method is used to create a movie card container, to display movie poster and its name.

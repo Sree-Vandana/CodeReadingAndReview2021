@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import "../styles/personInfo.css";
+import "../UI/css/personInfo.css";
+
 
 /**
  * function to fetch actors information, by providing their first, last name and ID assosiated with theor name sin TMDB Database.

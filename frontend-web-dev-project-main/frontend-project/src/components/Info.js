@@ -2,7 +2,7 @@ import DonutChart from "./DonutChart";
 import { useState, useEffect } from "react";
 import PersonLink from "./PersonLink";
 import Person from "./PersonInfo";
-import "../styles/Info.css";
+import "../UI/css/Info.css";
 
 /**
  * function to fetch information about the movie, based on parameters present in URL
