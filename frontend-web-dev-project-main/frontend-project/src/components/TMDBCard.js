@@ -15,8 +15,7 @@ const TMDBCard = ({ type, id, element, title, year }) => {
   const [loading, setLoading] = useState(false);
   const [omdb, setOmdb] = useState(false);
   const [secondaryUrl, setURL2] = useState();
-
-  let baseURL = window.location.protocol + "//" + window.location.host + "/info/";
+  const baseURL = window.location.protocol + "//" + window.location.host + "/info/";
 
   if (type === "/tv/") {
     id = id + "/external_ids";

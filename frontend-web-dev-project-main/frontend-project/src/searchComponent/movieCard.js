@@ -6,8 +6,8 @@ import "./movieCard.css";
  * @returns UI component of a movie card, with its poster and movie Title in the bottom. This is a hiper link, whcih will take to new page that gives complete details about that movie.
  */
 export const MovieCard = (props) => {
-  let { each } = props;
-  let baseURL =  window.location.protocol + "//" + window.location.host + "/info/";
+  const { each } = props;
+  const baseURL =  window.location.protocol + "//" + window.location.host + "/info/";
 
   return (
     <div className="card-container">

@@ -10,8 +10,8 @@ import Pagination from "react-js-pagination";
 export default function Results(props) {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  let [resultsArray, setResults] = useState([]);
-  let [page, setPage] = useState(parseInt(props["match"]["params"]["page"]));
+  const [resultsArray, setResults] = useState([]);
+  const [page, setPage] = useState(parseInt(props["match"]["params"]["page"]));
   const [total_pages, setTotal_pages] = useState(1);
 
   function changePage(event) {
