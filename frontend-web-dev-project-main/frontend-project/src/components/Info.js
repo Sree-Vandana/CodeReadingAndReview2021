@@ -1,6 +1,6 @@
 import DonutChart from "./DonutChart";
 import { useState, useEffect } from "react";
-import PersonLink from "./PersonLink";
+import PersonLink from "./PersonProfile";
 import Person from "./PersonInfo";
 import "../UI/css/Info.css";
 
