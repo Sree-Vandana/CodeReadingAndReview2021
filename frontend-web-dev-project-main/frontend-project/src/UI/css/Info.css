@@ -1,6 +1,5 @@
 .container {
   border: 1px;
-  
 }
 
 * {
@@ -51,7 +50,6 @@
 }
 
 p {
-  margin: 0px;
   width: 700px;
 }
 
