@@ -8,7 +8,7 @@ import "../UI/css/Info.css";
  * @param {Array} media - Array of objects for our output
  * @returns  UI component related TV show
  */
-export default function InfoTVShow({type, media, tmdb }) {
+export const InfoTVShow = ({type, media, tmdb }) => {
 
      return (
         <div className="container">
@@ -182,3 +182,5 @@ export default function InfoTVShow({type, media, tmdb }) {
         </div>
       );
 }
+
+export default InfoTVShow;
