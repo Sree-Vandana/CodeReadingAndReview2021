@@ -10,8 +10,9 @@ export default function About() {
       <div className= "About">
         <h1>
           About
-          </h1>
-          <div className="info">
+        </h1>
+
+        <div className="info">
           <p>
             <center>
             Hello! Welcome to our Movie Dashboard Application. <br/>
@@ -20,51 +21,24 @@ export default function About() {
             <br/> 
             </center>
           </p>
-          </div>
-          <div className="description">
-            <h3>
-              <center>Project Description</center>
-            </h3>
-            <p>
-              <center>
-            This Dashboard application gives information about all the Movies, Tv shows, Web series. 
-            <br/>
-            When you search a movie it gives information about the cast, description, Imdb rating, release date. 
-            </center> 
-            <br/>
+        </div>
+
+        <div className="description">
+          <h3>
+            <center>Project Description</center>
+          </h3>
+          <p>
             <center>
-            <b>
-              Motive: </b>
-            Users can know all the information about the Movies, Tv shows
+              This Dashboard application gives information about all the Movies, Tv shows, Web series. <br/>
+              When you search a movie it gives information about the cast, description, Imdb rating, release date. <br/><br/>
+              <b> Motive: </b> Users can know all the information about the Movies, Tv shows <br/><br/> 
+              <b> Main Stack Used: </b> HTML, CSS, JavaScript  <br/><br/>
+              <b> Libraries Used: </b> Charts.js, react-js-pagination <br/><br/>
+              <b> APIs Used: </b> The Movie Database, The Open Movie Database <br/><br/>
+              <b>Frameworks Used: </b> React, Bootstrap 
             </center>
-            <br/>
-              
-            <center>
-              <b>
-                Main Stack Used: </b>
-                 HTML, CSS, JavaScript 
-                </center>
-            <br/>
-            <center>
-              <b>
-                Libraries Used: </b>
-                 Charts.js, react-js-pagination
-                </center> 
-            <br/>
-            <center>
-              <b>
-                APIs Used: </b>
-                 The Movie Database, The Open Movie Database 
-                </center>
-            <br/>
-            <center>
-              <b>Frameworks Used: </b> 
-               React, Bootstrap 
-              </center>
-            <br/>
-          
-            </p>
-          </div>
+          </p>
+        </div>
       </div>
     )
 }
