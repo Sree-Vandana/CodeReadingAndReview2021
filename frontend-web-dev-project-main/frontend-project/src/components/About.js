@@ -15,10 +15,9 @@ export default function About() {
         <div className="info">
           <p>
             <center>
-            Hello! Welcome to our Movie Dashboard Application. <br/>
-            This Movie Dashbaord Application is developed by Andrew Wiles, Shashank Sekhar and Jaya Bhargavi Vengala. <br/>
-            We are students at Portland State University and we created this project for our Front-end Course CS 410p/510 under Caterina Paun.
-            <br/> 
+              Hello! Welcome to our Movie Dashboard Application. <br/>
+              This Movie Dashbaord Application is developed by Andrew Wiles, Shashank Sekhar and Jaya Bhargavi Vengala. <br/>
+              We are students at Portland State University and we created this project for our Front-end Course CS 410p/510 under Caterina Paun. <br/> 
             </center>
           </p>
         </div>

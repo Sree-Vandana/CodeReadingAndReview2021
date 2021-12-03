@@ -11,9 +11,9 @@ export const CardList = (props) => {
     <>
       <h1>Search Results</h1>
       <div className="card-list">
-        {props.results.map((each) => (
-          <MovieCard key={each.id} each={each} />
-        ))}
+        {
+          props.results.map((each) => <MovieCard key={each.id} each={each} />)
+        }
       </div>
     </>
   );
