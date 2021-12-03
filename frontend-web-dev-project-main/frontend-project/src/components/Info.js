@@ -1,7 +1,7 @@
-import DonutChart from "./DonutChart";
 import { useState, useEffect } from "react";
-import PersonLink from "./PersonProfile";
 import Person from "./PersonInfo";
+import InfoOMDB from "./InfoOMDB";
+import InfoTVShow from "./InfoTVShow";
 import "../UI/css/Info.css";
 
 /**
@@ -22,9 +22,10 @@ export default function Info(props) {
   const [id] = useState(props["match"]["params"]["imdbID"]);
   const [tmdbID] = useState(props["match"]["params"]["tmdbID"]);
 
-  useEffect(() => {
+  useEffect(() => { // Useeffect to fetch all the media data form API
     const fetchMedia = async () => {
       setLoading(true);
+
       const res = await fetch( 
           "https://www.omdbapi.com/?i=" + 
           id + 
@@ -59,6 +60,7 @@ export default function Info(props) {
             }
           );
         }
+
         if (specificRes.length === 0 || specificRes["success"] === false) {
           specificRes = await fetch( 
               "https://api.themoviedb.org/3/" + 
@@ -96,8 +98,7 @@ export default function Info(props) {
           .then((res) => res.json())
           .catch((error) => console.error("fetch error:", error));
 
-      if (
-        (resCredits.length === undefined || resCredits.length === 0) && tmdbID ) {
+      if ((resCredits.length === undefined || resCredits.length === 0) && tmdbID ) {
         resCredits = await fetch( 
             "https://api.themoviedb.org/3/" + 
             type + 
@@ -121,349 +122,15 @@ export default function Info(props) {
   } else if (loading) {
     return <></>;
   } else {
-    // INFO: if we have omdb, media, and tmdb isn't empty aka movie
-    if (omdb && media && tmdb !== []) {
+    if (omdb && media && tmdb !== []) { // INFO: if we have omdb, media, and tmdb isn't empty aka movie
       return (
-        <div className="container">
-          {`Title` in media && `Year` in media ? (
-            <h2>
-              {media["Title"]} ({media["Year"]})
-            </h2>
-          ) : `Title` in media ? (
-            // if Title is in the object it SHOULD have a title
-            <h2>{media["Title"]}</h2>
-          ) : (
-            // output nothing if neither title nor year in object
-            <></>
-          )}
-
-          <div className="box1">
-            {`Poster` in media ? (
-              media["Poster"] ? (
-                <img
-                  src={media["Poster"]}
-                  width="300px"
-                  height="440px"
-                  alt={
-                    `poster for ` + media["Title"] + ` (` + media["Year"] + `)`
-                  }
-                />
-              ) : (
-                // Poster field is empty
-                <></>
-              )
-            ) : (
-              // Poster isn't in media
-              <></>
-            )}
-          </div>
-          <div className="Box1a">
-            {`Plot` in media ? (
-              media["Plot"] ? (
-                <p>Plot: {media["Plot"]}</p>
-              ) : (
-                // Plot is empty
-                <></>
-              )
-            ) : (
-              // Plot isn't in object
-              <></>
-            )}
-            {`Genre` in media ? (
-              media["Genre"] ? (
-                <p>Genre(s): {media["Genre"]}</p>
-              ) : (
-                // Genre is empty
-                <></>
-              )
-            ) : (
-              // Genre isn't in object
-              <></>
-            )}
-
-            {`Rated` in media ? (
-              media["Rated"] ? (
-                <p key={media["Rated"]}>Rating: {media["Rated"]}</p>
-              ) : (
-                // is empty
-                <></>
-              )
-            ) : (
-              // isn't in object
-
-              <></>
-            )}
-
-            {`BoxOffice` in media ? (
-              media["BoxOffice"] ? (
-                <p key={media["BoxOffice"]}>Box Office: {media["BoxOffice"]}</p>
-              ) : (
-                // BoxOffice is empty
-                <></>
-              )
-            ) : (
-              // BoxOffice isn't in object
-              <></>
-            )}
-
-            {`Director` in media ? (
-              <p>Director(s): {media["Director"]}</p>
-            ) : (
-              // isn't in object
-              <></>
-            )}
-
-            {tmdb.length !== 0 && `cast` in tmdb ? (
-              <p>
-                Cast:
-                {tmdb["cast"].map((each, i) =>
-                  i === tmdb["cast"].length - 1 ? (
-                    <PersonLink
-                      key={each["id"]}
-                      id={each["id"]}
-                      last={true}
-                      personName={each["name"]}
-                    />
-                  ) : (
-                    <PersonLink
-                      key={each["id"]}
-                      id={each["id"]}
-                      last={false}
-                      personName={each["name"]}
-                    />
-                  )
-                )}
-              </p>
-            ) : (
-              <p>Cast: {media["Actors"]}</p>
-            )}
-            {`Writer` in media ? (
-              media["Writer"] ? (
-                <p>Writers: {media["Writer"]}</p>
-              ) : (
-                // Writer is empty
-                <></>
-              )
-            ) : (
-              // Writer isn't in object
-              <></>
-            )}
-            {`Runtime` in media ? (
-              <p>Runtime: {media["Runtime"]}</p>
-            ) : (
-              // Runtime isn't in object
-              <></>
-            )}
-            {`Production` in media ? (
-              media["Production"] ? (
-                <p>Production: {media["Production"]}</p>
-              ) : (
-                // is empty
-                <></>
-              )
-            ) : (
-              // isn't in object
-              <></>
-            )}
-            {`Released` in media ? (
-              media["Released"] ? (
-                <p>Release date: {media["Released"]}</p>
-              ) : (
-                // is empty
-                <></>
-              )
-            ) : (
-              // isn't in object
-
-              <></>
-            )}
-          </div>
-          {ratings ? (
-            <div className="box2">
-              {ratings.map((each) => (
-                <DonutChart rating={each} key={each["Source"]} />
-              ))}
-            </div>
-          ) : (
-            <></>
-          )}
-        </div>
+        <InfoOMDB omdb={omdb} media={media} tmdb={tmdb} ratings={ratings} />
       );
-      // tv show
-    } else if (type !== "person") {
-      return (
-        <div className="container">
-          {`title` in media && `release_date` in media ? (
-            <h2>
-              {media["title"]} ({media["release_date"].slice(0, 4)})
-            </h2>
-          ) : `title` in media ? (
-            <h2>{media["title"]} </h2>
-          ) : (
-            <h2>Unknown {type}</h2>
-          )}
-          {`release_date` in media || `overview` in media ? (
-            <div className="TMDB-box">
-              <center>
-                {`release_date` in media ? (
-                  media["release_date"] ? (
-                    <img
-                      height="350px"
-                      width="350px"
-                      src={
-                        `https://image.tmdb.org/t/p/original/` +
-                        media["poster_path"]
-                      }
-                      alt={
-                        `poster for ` +
-                        media["title"] +
-                        ` (` +
-                        media["release_date"].slice(0, 4) +
-                        `)`
-                      }
-                    />
-                  ) : (
-                    <img
-                      src={
-                        `https://image.tmdb.org/t/p/original/` +
-                        media["poster_path"]
-                      }
-                      alt={`poster for ` + media["title"]}
-                    />
-                  )
-                ) : (
-                  <></>
-                )}
-
-                {`overview` in media ? (
-                  media["overview"] ? (
-                    <p>
-                      <br></br>
-                      <b>Overview: </b>
-                      <br></br> {media["overview"]}
-                    </p>
-                  ) : (
-                    // is empty
-                    <></>
-                  )
-                ) : (
-                  // isn't in object
-                  <></>
-                )}
-              </center>
-            </div>
-          ) : (
-            <></>
-          )}
-
-          {`cast` in tmdb ||
-          `budget` in media ||
-          `production_companies` in media ||
-          `crew` in tmdb ||
-          `homepage` in media ? (
-            <div className="TMDB-box2">
-              <center>
-                {`cast` in tmdb ? (
-                  tmdb["cast"] ? (
-                    <p>
-                      <br></br>
-                      Cast: <br></br>
-                      {tmdb["cast"].map((each, i) =>
-                        i === tmdb["cast"].length - 1 ? (
-                          <PersonLink
-                            key={each["id"]}
-                            id={each["id"]}
-                            last={true}
-                            personName={each["name"]}
-                          />
-                        ) : (
-                          // each["name"] + `, `
-                          <PersonLink
-                            key={each["id"]}
-                            id={each["id"]}
-                            last={false}
-                            personName={each["name"]}
-                          />
-                        )
-                      )}
-                    </p>
-                  ) : (
-                    // cast is empty - haven't seen a case but just in case we have this
-                    <></>
-                  )
-                ) : (
-                  // cast not in object
-                  <></>
-                )}
-                {`budget` in media ? (
-                  media["budget"] ? (
-                    <p key={media["budget"]}>Budget: {media["budget"]}</p>
-                  ) : (
-                    // budget not set
-                    <></>
-                  )
-                ) : (
-                  // budget not in media
-                  <></>
-                )}
-                {`production_companies` in media ? (
-                  media["production_companies"] ? (
-                    <p>
-                      <b> Production Companies : </b>
-                      {media["production_companies"].map((each, i) =>
-                        i === media["production_companies"].length - 1
-                          ? each["name"]
-                          : each["name"] + `, `
-                      )}
-                    </p>
-                  ) : (
-                    // is empty
-                    <></>
-                  )
-                ) : (
-                  // isn't in object
-                  <></>
-                )}
-                <br />
-                {`crew` in tmdb ? (
-                  tmdb["crew"] ? (
-                    tmdb["crew"].map((each) => (
-                      <p key={each["name"]}>
-                        <br />
-                        {each["job"] + `: ` + each["name"]}
-                      </p>
-                    ))
-                  ) : (
-                    // is empty
-                    <></>
-                  )
-                ) : (
-                  // isn't in object
-                  <></>
-                )}
-                <br />
-                {`homepage` in media ? (
-                  media["homepage"] ? (
-                    <a href={media["homepage"]} key={media["homepage"]}>
-                      <b>Homepage</b>
-                    </a>
-                  ) : (
-                    // homepage not set
-                    <></>
-                  )
-                ) : (
-                  // homepage not in object
-                  <></>
-                )}
-              </center>
-            </div>
-          ) : (
-            <></>
-          )}
-        </div>
+    } else if (type !== "person") { // tv show
+      return(
+        <InfoTVShow type={type} media={media} tmdb={tmdb}/>
       );
-      // output person
-    } else {
+    } else { // output person
       return (
         <div className="container">
           <Person tmdbID={tmdbID} />
