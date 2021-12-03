@@ -1,6 +1,7 @@
 import { Doughnut } from "react-chartjs-2";
 import "../UI/css/DonutChart.css";
 import "../UI/css/Info.css";
+
 /**
  * @param {Object} rating
  * @returns Doughnut chart, with label, in a div
