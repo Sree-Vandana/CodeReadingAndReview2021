@@ -9,7 +9,7 @@ import "../UI/css/Info.css";
  * @param {Array} ratings - Array of movie ratings
  * @returns  if we have omdb, media, and tmdb isn't empty aka movie, retuns UI containing all that info
  */
-export default function InfoOMDB({media, tmdb, ratings}) {
+export const InfoOMDB = ({media, tmdb, ratings}) => {
 
   return (
         <div className="container">
@@ -185,3 +185,5 @@ export default function InfoOMDB({media, tmdb, ratings}) {
         </div>
       );
 }
+
+export default InfoOMDB;
